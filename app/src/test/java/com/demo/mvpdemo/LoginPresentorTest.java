@@ -19,6 +19,7 @@ public class LoginPresentorTest {
 
     private LoginPresentor mPresenter;
     private LoginContract.ILoginView mView;
+    private ILoginService service;
 
     @Before
     @SuppressWarnings("unchecked")
@@ -26,6 +27,7 @@ public class LoginPresentorTest {
 
         mView = mock(LoginActivity.class);
         mPresenter = new LoginPresentor(mView);
+        service = mock(LoginService.class);
     }
 
     @Test

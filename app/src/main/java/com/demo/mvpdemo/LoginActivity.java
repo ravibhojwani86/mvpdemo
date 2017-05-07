@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -47,11 +48,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.IL
 
     @Override
     public void onUserAuthenticated() {
-
+        Toast.makeText(this, "Authenticated.", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void showErrorMessage(String msg) {
-
+        Toast.makeText(this, ""+msg, Toast.LENGTH_LONG).show();
     }
 }
