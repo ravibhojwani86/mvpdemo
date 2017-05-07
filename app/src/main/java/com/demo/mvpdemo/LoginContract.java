@@ -14,7 +14,7 @@ public interface LoginContract {
     }
 
     interface ILoginPresentor {
-        void validateUser(String userName, String password);
+        void validateUser();
     }
 
 }

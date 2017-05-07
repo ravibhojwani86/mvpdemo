@@ -20,7 +20,10 @@ public class LoginPresentor implements LoginContract.ILoginPresentor, LoginListe
     }
 
     @Override
-    public void validateUser(String userName, String password) {
+    public void validateUser() {
+        String userName = mView.getUserName();
+        String password = mView.getPassword();
+
         if(isEmpty(userName)){
             mView.showErrorMessage("User name cannot be empty");
             return;

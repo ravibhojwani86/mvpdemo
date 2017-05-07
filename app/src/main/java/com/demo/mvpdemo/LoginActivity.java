@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.IL
 
     @OnClick(R.id.login)
     void onLoginClick(){
-        iLoginPresentor.validateUser(getUserName(), getPassword());
+        iLoginPresentor.validateUser();
     }
 
     @Override

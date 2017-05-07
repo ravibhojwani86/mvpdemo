@@ -9,6 +9,7 @@ import org.junit.runners.JUnit4;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by ravi .
@@ -30,19 +31,27 @@ public class LoginPresentorTest {
     @Test
     public void testLoginClicked()
     {
-        mPresenter.validateUser("", null);
+        when(mView.getUserName()).thenReturn("");
+        when(mView.getPassword()).thenReturn("");
+        mPresenter.validateUser();
+
         verify(mView, times(1)).showErrorMessage("User name cannot be empty");
 
-        mPresenter.validateUser("ravi", null);
+        when(mView.getUserName()).thenReturn("ravi");
+        when(mView.getPassword()).thenReturn("");
+        mPresenter.validateUser();
+
         verify(mView, times(1)).showErrorMessage("Password cannot be empty");
 
-        mPresenter.validateUser("ravi", "");
-        verify(mView, times(2)).showErrorMessage("Password cannot be empty");
 
-        mPresenter.validateUser("ravi", "wrongPassword");
+        when(mView.getUserName()).thenReturn("ravi");
+        when(mView.getPassword()).thenReturn("wrongPassword");
+        mPresenter.validateUser();
         verify(mView, times(1)).showErrorMessage("Credentials invalid.");
 
-        mPresenter.validateUser("ravi", "ravi");
+        when(mView.getUserName()).thenReturn("ravi");
+        when(mView.getPassword()).thenReturn("ravi");
+        mPresenter.validateUser();
         verify(mView, times(1)).onUserAuthenticated();
     }
 }
